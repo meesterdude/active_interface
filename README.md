@@ -22,7 +22,7 @@ module ExampleInterface
 end
 ```
 
-Make sure any methods defined either call `super` or define an `InterfaceContract` in order for the underlying method to be called. 
+Make sure any methods defined either call `super` or define an `InterfaceContract` (more info below) in order for the underlying method to be called. 
 
 for any class that you want to apply this interface to, append it after the definition. This ensures all the methods are defined, and that when the Interface is appended that it will sit in front of the method calls and act as a pass through.   
 
