@@ -10,11 +10,13 @@ Add to your Gemfile
   gem 'active_interface'
 ```
 
-Then Bundle install. Now create a directory like `app/interfaces` and put your first interface there. 
+Then Bundle install. Now create a directory like `app/interfaces` and put your first interface there. Any methods defined (or attributes specified in `REQUIRED_ATTRIBUTES`) will be enforced on the class the interface is appended to. 
 
 ```
 module ExampleInterface  
   extend ActiveInterface::Base
+  
+  REQUIRED_ATTRIBUTES = %i[size count count=].freeze
 
   def example
     super
@@ -24,7 +26,7 @@ end
 
 Make sure any methods defined either call `super` or define an `InterfaceContract` (more info below) in order for the underlying method to be called. 
 
-for any class that you want to apply this interface to, append it after the definition. This ensures all the methods are defined, and that when the Interface is appended that it will sit in front of the method calls and act as a pass through.   
+for any class that you want to apply this interface to, append it after the definition. This ensures all the methods are defined by the class, and that when the Interface is appended that it will sit in front of the method calls and act as a pass through.   
 
 ```
 class MyClass
