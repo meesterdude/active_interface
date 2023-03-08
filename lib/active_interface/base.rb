@@ -1,12 +1,11 @@
-require 'pry'
-require_relative "interface_contract"
+
 class Module
   alias_method :interface?, :<
 end
 
 
-module ActiveInterface::Base
-
+module ActiveInterface
+  module Base
 
     def prepended(klass)
       klass_methods = klass.public_instance_methods(false)
@@ -17,8 +16,8 @@ module ActiveInterface::Base
       end
       public_instance_methods(false).each do |method_name|
         interface_method = instance_method(method_name)
-        class_method = klass.instance_method(method_name)
-      
+        class_method = klass.instance_method(method_name).super_method
+        next if class_method.nil?
         interface_params = interface_method.parameters.map(&:last)
         class_params = class_method.parameters.map(&:last)
         
@@ -36,6 +35,6 @@ module ActiveInterface::Base
         raise "#{messages.size} errors verifying #{klass} conforms to #{self} \n" + messages.join("\n")
       end
 
+    end
   end
-
 end
