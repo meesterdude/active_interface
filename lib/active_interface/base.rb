@@ -7,14 +7,8 @@ end
 
 module ActiveInterface::Base
 
-   #module ClassMethods
-
-   def ensure
-    binding.pry
-   end
 
     def prepended(klass)
-      puts "$$$$ Prepending"
       klass_methods = klass.public_instance_methods(false)
       messages = []
       missing_methods = public_instance_methods(false) - klass_methods
@@ -43,13 +37,5 @@ module ActiveInterface::Base
       end
 
   end
-
-
-  def included(base)
-    puts "included #{base}"
-    #base.include(ClassMethods)
-
-  end
-
 
 end
