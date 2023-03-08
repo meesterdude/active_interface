@@ -79,7 +79,7 @@ Once we append `User` with `NameInterface`, we gain the following:
 
 ## What's an *active* interface?
 
-Once appended, Active Interface will ensure that certain methods and attributes are present. However, as a dynamically typed language, it can be ambiguious what the expected inputs and outputs are for a method or how flexible they are. As a developer that must rely on an interface created by another developer or team, how can you be sure you'll get the expected return values, or that you know what the expected inputs are? 
+Once appended, Active Interface will ensure that certain methods and attributes are present. However, as a ruby is a dynamically typed language, it can be ambiguious what the expected inputs and outputs are for a method or how flexible they are. As a developer that must rely on an interface created by another developer or team, how can you be sure you'll get the expected return values, or that you know what the expected inputs are? 
 
 Enter Interface Contracts with Active Interface!
 
