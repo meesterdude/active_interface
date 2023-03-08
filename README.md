@@ -7,7 +7,7 @@ ActiveInterface is a Ruby library for defining "active" OOP interfaces in ruby.
 Add to your Gemfile
 
 ```
-  gem 'activeinterface'
+  gem 'active_interface'
 ```
 
 Then Bundle install. Now create a directory like `app/interfaces` and put your first interface there. 
