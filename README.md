@@ -1,4 +1,4 @@
-# Active Interface
+# active_interface
 
 ActiveInterface is a Ruby library for defining "active" OOP interfaces in ruby. 
 
@@ -49,7 +49,7 @@ class User
 end
 ```
 
-if we also want a `Contact` or `Admin` to have the same behavior, we might reach for creating a common Person class. But what if each of our Classes already inherit from another class? We could extact everything into a Person module. But if we also have a Product class, or a Car class with the same behavior but their own implementations, how can we allow them to be wildly different and yet similar under certain circumstances? 
+if we also want a `Contact` or `Admin` to have the same behavior, we might reach for creating a common `Person` class. But what if each of our Classes already inherit from another class? We could extact everything into a `PersonModule`. But if we also have a `Product` class, or a `Car` class with the same behavior but their own implementations, how can we allow them to be wildly different and yet similar enough to treat the same in certain circumstances? 
 
 Enter Active Interface!
 
@@ -69,7 +69,7 @@ end
 User.append NameInterface
 ```
 
-Once we append User with NameInterface, we gain the following:
+Once we append `User` with `NameInterface`, we gain the following:
   - Will raise exception if any of the required attributes are not defined
   - Will raise exception if the expected methods are not defined or have different method signatures
   - the interface sits in front of every call to the methods 
