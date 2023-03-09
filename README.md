@@ -18,7 +18,7 @@ module ExampleInterface
   
   REQUIRED_ATTRIBUTES = %i[size count count=].freeze
 
-  def example
+  def example(param_1, options={})
     super
   end
 end
@@ -26,7 +26,7 @@ end
 
 Make sure any methods defined either call `super` or  `interface_contract` (more info below) in order for the underlying method to be executed.
 
-for any class that you want to apply this interface to, append it after the definition. This ensures all the methods are defined by the class, and that when the Interface is appended that it will sit in front of the method calls and act as a pass through.   
+for any class that you want to apply this interface to, append it after the definition. This ensures all the methods are defined by the class and match expected method signatures, and that when the Interface is appended that it will sit in front of the method calls and act as a pass through.   
 
 ```
 class MyClass
