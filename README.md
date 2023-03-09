@@ -24,7 +24,7 @@ module ExampleInterface
 end
 ```
 
-Make sure any methods defined either call `super` or define an `InterfaceContract` (more info below) in order for the underlying method to be called. 
+Make sure any methods defined either call `super` or  `interface_contract` (more info below) in order for the underlying method to be executed.
 
 for any class that you want to apply this interface to, append it after the definition. This ensures all the methods are defined by the class, and that when the Interface is appended that it will sit in front of the method calls and act as a pass through.   
 
@@ -75,11 +75,11 @@ Once we append `User` with `NameInterface`, we gain the following:
   - Will raise exception if any of the required attributes are not defined
   - Will raise exception if the expected methods are not defined or have different method signatures
   - the interface sits in front of every call to the methods 
-  - we can ask `User.interface?(NameInterface) => true` to develop our code against. 
+  - we can ask `User.has_interface?(NameInterface) => true` to develop our code against. 
 
 ## What's an interface contract?
 
-Once appended, Active Interface will ensure that certain methods/signatures and attributes are present at initialization. However, as a ruby is a dynamically typed language, it can be ambiguious what the expected inputs and outputs are for a method or how flexible they are. As a developer that must rely on an interface created by another developer or team, how can you be sure you'll get the expected return values, or that you know what the expected inputs are? 
+Once appended, Active Interface will ensure that certain methods/signatures and attributes are present at initialization. However, as a ruby is a dynamically typed language, it can be ambiguious what the expected inputs and outputs are for a method or how flexible they are. As a developer that must rely on an interface created by another team, how can you be sure you'll get the expected return values, or that you know what the expected inputs are? 
 
 Enter Interface Contracts with Active Interface!
 
@@ -101,13 +101,14 @@ end
 User.append NameInterface
 ```
 
-With the above Interface, every call to `#full_name` will be verified that it adheres to the interface contract. This carries a number of benefits:
+With the above Interface, every call to `#full_name` will be enforced to adheres to the interface contract. This carries a number of benefits:
 - Documentation about what the expected parameters and return values are for the Interface
 - method level validations of input and output values abstracted from implementation
 - raises `InterfaceError` for any incorrect parameters per the contract
 - raises `InterfaceError` if the output does not conform to the contract
 - Ensures developers can implement interfaces and code against them reliably
-- If there are no exceptions raised, the block returns the result of calling `super`
+- the results of `super` are only called once all the inputs have been enforced, or at the end of the block.
+- If there are no exceptions raised, the block returns the result of `super`
 
 ## Other Active Interface uses
 Because of the runtime capabilities, Active Interface can be used for more than just API conformity. Some additional uses could include:
@@ -116,5 +117,6 @@ Because of the runtime capabilities, Active Interface can be used for more than 
 - Transforming inputs or outputs (such as always calling `.to_s`)
 - Caching
 - Running history of previous inputs and outputs
+- And more!
 
 

@@ -1,6 +1,6 @@
 
 class Module
-  alias_method :can_interface?, :<
+  alias_method :has_interface?, :<
 end
 
 
