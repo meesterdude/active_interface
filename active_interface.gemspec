@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email = ["violentpurr@gmail.com"]
 
   spec.summary = "OOP Interfaces for ruby"
-  spec.description = "Provide  OOP Interfaces for ruby using modules including runtime enforcement"
+  spec.description = "Provide OOP Interfaces for ruby"
   spec.homepage = "https://github.com/meesterdude/active_interface"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.6.0"
