@@ -36,7 +36,6 @@ RSpec.describe ActiveInterface::Base do
 
     context 'when required attributes are implemented' do
       it 'does not raise an error' do
-        binding.pry
         expect { klass.prepend(interface_module) }.not_to raise_error
       end
     end

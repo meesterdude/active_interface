@@ -51,7 +51,7 @@ module ActiveInterface
     end
 
     def interface_contract(_binding)
-      ActiveInterface::Contract.new(binding)
+      ActiveInterface::Contract.new(_binding).call
     end
 
     def self.included(klass)

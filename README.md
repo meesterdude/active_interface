@@ -1,6 +1,6 @@
 # active_interface
 
-ActiveInterface is a Ruby library for defining "active" OOP interfaces in ruby. 
+ActiveInterface is a Ruby library for defining OOP interfaces in ruby 
 
 ## Getting Started
 
@@ -77,21 +77,21 @@ Once we append `User` with `NameInterface`, we gain the following:
   - the interface sits in front of every call to the methods 
   - we can ask `User.interface?(NameInterface) => true` to develop our code against. 
 
-## What's an *active* interface?
+## What's an interface contract?
 
-Once appended, Active Interface will ensure that certain methods and attributes are present. However, as a ruby is a dynamically typed language, it can be ambiguious what the expected inputs and outputs are for a method or how flexible they are. As a developer that must rely on an interface created by another developer or team, how can you be sure you'll get the expected return values, or that you know what the expected inputs are? 
+Once appended, Active Interface will ensure that certain methods/signatures and attributes are present at initialization. However, as a ruby is a dynamically typed language, it can be ambiguious what the expected inputs and outputs are for a method or how flexible they are. As a developer that must rely on an interface created by another developer or team, how can you be sure you'll get the expected return values, or that you know what the expected inputs are? 
 
 Enter Interface Contracts with Active Interface!
 
 ```
 module NameInterface
   
-  extend ActiveInterface::Base
+  include ActiveInterface::Base
 
   REQUIRED_ATTRIBUTES = %i[first_name last_name].freeze
 
   def full_name(seperator)
-    InterfaceContract.new(binding).call do |c|
+    interface_contract(binding) do |c|
       c.enforce_input :seperator, kind_of: String, length: 1..4
       c.enforce_output kind_of: String
     end
